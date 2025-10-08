@@ -28,7 +28,6 @@
 - **Shared Preferences / Hive** (armazenamento local - pode ser adaptado para Firebase)
 - **The Movie DB API** (dados de filmes e séries)
 
----
 
-## 🧱 Estrutura do Projeto (exemplo)
+
 
