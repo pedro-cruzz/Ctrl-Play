@@ -9,6 +9,6 @@ class AppRoutes {
 
   static final routes = <String, WidgetBuilder>{
     login: (_) => const LoginPage(),
-    // home: (_) => const HomePage(),
+    home: (_) => const HomePage(),
   };
 }
