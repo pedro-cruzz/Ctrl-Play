@@ -15,8 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, String>> destaqueFilmes = [];
-  List<Map<String, String>> filmesPopulares = [];
+  List<Map<String, dynamic>> destaqueFilmes = [];
+  List<Map<String, dynamic>> filmesPopulares = [];
   bool isLoading = true;
 
   final String apiKey = '2117046a0bb73320a252a56d49d2e10e';
@@ -42,21 +42,12 @@ class _HomePageState extends State<HomePage> {
         final List results = data['results'];
 
         setState(() {
-          filmesPopulares = results.map<Map<String, String>>((movie) {
-            final bannerPath =
-                movie['backdrop_path'] ?? movie['poster_path'] ?? '';
-            return {
-              'id': movie['id'].toString(),
-              'filme': bannerPath.isNotEmpty
-                  ? 'https://image.tmdb.org/t/p/w500$bannerPath' 
-                  : '',
-              'titulo': movie['title'] ?? '',
-              'descricao': movie['overview'] ?? '',
-              'data': movie['release_date'] ?? '',
-              'atores': '',
-              'genero': '',
-            };
-          }).toList();
+          // 2. Mapeamento corrigido:
+          // Agora, estamos pegando o mapa *original* da API e apenas
+          // convertendo-o para o tipo correto.
+          filmesPopulares = results
+              .map((movie) => movie as Map<String, dynamic>)
+              .toList();
 
           destaqueFilmes = filmesPopulares.take(4).toList();
           isLoading = false;
@@ -84,28 +75,16 @@ class _HomePageState extends State<HomePage> {
         final data = json.decode(response.body);
         final List results = data['results'];
 
-        final filmesEncontrados = results.map<Map<String, String>>((movie) {
-          final bannerPath = movie['backdrop_path'] ?? movie['poster_path'] ?? '';
-          return {
-            'id': movie['id'].toString(),
-            'filme': bannerPath.isNotEmpty
-                ? 'https://image.tmdb.org/t/p/w500$bannerPath'
-                : '',
-            'titulo': movie['title'] ?? '',
-            'descricao': movie['overview'] ?? '',
-            'data': movie['release_date'] ?? '',
-            'atores': '',
-            'genero': '',
-          };
-        }).toList();
+        // 3. Correção também aplicada aqui
+        final filmesEncontrados = results
+            .map((movie) => movie as Map<String, dynamic>)
+            .toList();
 
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => SearchResultsPage(
-              filmes: filmesEncontrados,
-              query: query,
-            ),
+            builder: (_) =>
+                SearchResultsPage(filmes: filmesEncontrados, query: query),
           ),
         );
       } else {
@@ -121,6 +100,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+        // ... (resto do seu código build) ...
         backgroundColor: AppColors.background,
         elevation: 0,
         leading: Padding(
