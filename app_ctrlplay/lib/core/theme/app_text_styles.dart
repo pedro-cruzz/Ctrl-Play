@@ -18,4 +18,10 @@ class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+
+  static const buttonLogin = TextStyle(
+    color: Color.fromARGB(255, 0, 0, 0),
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 }
