@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project/views/login/widgets/login_form.dart';
+import 'package:project/core/theme/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  // Definição das cores para serem usadas globalmente
-  static const Color primaryColor = Color(0xFF38006b); // Roxo escuro para fundo e botão secundário
-  static const Color cardColor = Color(0xFFe0e0e0);   // Cinza claro para o card de formulário
-  static const Color buttonPrimaryColor = Color(0xFFFF3D67); // Vermelho/Rosa vibrante para o botão principal
+ 
 
   @override
   Widget build(BuildContext context) {
     // Usamos um Scaffold com cor de fundo
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: AppColors.background,
       body: Stack( // Usamos Stack para posicionar a navegação/ícones no topo
         children: [
           // 1. Header (Logotipo e Ícone do Usuário no topo, fora do card)
@@ -24,10 +22,9 @@ class LoginPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Logotipo no canto superior esquerdo (assumindo que 'assets/logo.png' tem o logo roxo)
                 Image.asset('assets/logo.png', height: 40), 
                 // Ícone do usuário no canto superior direito
-                const Icon(Icons.person, color: Colors.white, size: 30), 
+                const Icon(Icons.person, color: AppColors.icons, size: 30), 
               ],
             ),
           ),
@@ -40,7 +37,7 @@ class LoginPage extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 400), // Limita largura em telas maiores
                 padding: const EdgeInsets.all(40),
                 decoration: BoxDecoration(
-                  color: cardColor,
+                  color: AppColors.form_fill,
                   borderRadius: BorderRadius.circular(30), // Bordas super arredondadas
                   boxShadow: [
                     BoxShadow(

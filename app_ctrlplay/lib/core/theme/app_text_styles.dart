@@ -7,6 +7,11 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
+  static const title = TextStyle(
+    color: AppColors.primary,
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
 
   static const body = TextStyle(
     color: AppColors.primary,
