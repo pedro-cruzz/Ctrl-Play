@@ -45,5 +45,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+  		<string>https</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos de acesso à sua galeria para que você possa escolher uma foto de perfil.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos de acesso à sua câmera para que você possa tirar uma foto de perfil.</string>
 </dict>
 </plist>
